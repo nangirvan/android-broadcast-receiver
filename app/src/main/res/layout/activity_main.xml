@@ -6,13 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/bcData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="DATA" />
+
+        <EditText
+            android:id="@+id/inBcAction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Broadcast Action"
+            android:text="com.nangirvan.classifier.FOG_MARATHON" />
+
+        <EditText
+            android:id="@+id/inBcName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Broadcast Name"
+            android:text="Classification_Result_MQTT" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
