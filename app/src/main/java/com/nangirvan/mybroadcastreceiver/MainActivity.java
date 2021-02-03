@@ -2,6 +2,10 @@ package com.nangirvan.mybroadcastreceiver;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(this::onClicks);
     }
 
+    public void registerBroadcastReceiver(BroadcastReceiver broadcastReceiver, String broadcastAction) {
+        IntentFilter filter = new IntentFilter(broadcastAction);
+        this.registerReceiver(broadcastReceiver, filter);
+        Log.i(TAG_MAIN, "Broadcast "+broadcastAction+" registered");
+    }
+
     public void onClicks(View v) {
         switch(v.getId()) {
             case R.id.btnRegister:
@@ -39,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG_MAIN, strBcAction);
                 Log.i(TAG_MAIN, strBcName);
                 Log.i(TAG_MAIN, strbcData);
+
+                BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        Log.i(TAG_MAIN, "Broadcast data received");
+                    }
+                };
+
+                registerBroadcastReceiver(broadcastReceiver, strBcAction);
         }
     }
 }
