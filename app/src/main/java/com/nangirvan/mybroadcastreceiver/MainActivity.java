@@ -44,16 +44,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnRegister:
                 String strBcAction = inBcAction.getText().toString();
                 String strBcName = inBcName.getText().toString();
-                String strbcData = bcData.getText().toString();
 
                 Log.i(TAG_MAIN, strBcAction);
                 Log.i(TAG_MAIN, strBcName);
-                Log.i(TAG_MAIN, strbcData);
 
                 BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
                     @Override
                     public void onReceive(Context context, Intent intent) {
                         Log.i(TAG_MAIN, "Broadcast data received");
+
+                        String strBcData = intent.getStringExtra(strBcName);
+                        Log.i(TAG_MAIN, strBcData);
+
+                        bcData.setText(strBcData);
                     }
                 };
 
